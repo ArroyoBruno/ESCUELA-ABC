@@ -1,3 +1,4 @@
+
 package com.gerdoc.escuela.model;
 
 import jakarta.persistence.*;
@@ -12,18 +13,17 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 @Table(name = "PROFESOR_MATERIA")
-public class ProfesorMateria
-{
-    @Id
-    @GeneratedValue( strategy = GenerationType.IDENTITY )
-    @Column(name = "ID")
-    private Long id;
+@IdClass(ProfesorMateriaId.class)
+public class ProfesorMateria {
 
+    @Id
     @ManyToOne
     @JoinColumn(name = "PROFESOR_ID")
     private Profesor profesor;
 
+    @Id
     @ManyToOne
     @JoinColumn(name = "MATERIA_ID")
     private Materia materia;
 }
+
